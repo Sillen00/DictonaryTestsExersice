@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.wordCard {
+    border: 4px solid var(--primary-color);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    min-height: 25em;
+
+    margin: 0 1rem;
+    max-width: 60rem;
+    width: 60rem;
+}
+
+.wordCard h5 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}

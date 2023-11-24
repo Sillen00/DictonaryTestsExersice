@@ -4,18 +4,18 @@ import WordCard from "./WordCard";
 
 const WordContainer = () => {
     const [searchTerm, setSearchTerm] = useState("");
-    const [wordObj, setWordObj] = useState();
+    const [searchResultWord, setSearchResultWord] = useState([]);
 
     useEffect(() => {
         // Fetch data from API based on searchTerm
         fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchTerm}`)
             // Update the words state
             .then((response) => response.json())
-            .then((data) => setWordObj(data || []))
+            .then((data) => setSearchResultWord(data || []))
             .catch((error) => console.error("Error fetching data:", error));
     }, [searchTerm]);
 
-    console.log(wordObj);
+    console.log(searchResultWord);
     const handleSearch = (searchTerm) => {
         setSearchTerm(searchTerm);
     };
@@ -23,7 +23,7 @@ const WordContainer = () => {
     return (
         <div>
             <SearchBarWord onSearch={handleSearch} />
-            <WordCard wordObj={wordObj} />
+            <WordCard searchResultWord={searchResultWord} />
         </div>
     );
 };
