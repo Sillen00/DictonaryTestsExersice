@@ -1,0 +1,13 @@
+.inputContainer {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 1rem;
+}
+
+.wordSearchField {
+    padding: 1rem 1rem;
+    background-color: white;
+    width: 60em;
+    border: 3px solid var(--primary-color);
+    border-radius: 0.5rem;
+}
