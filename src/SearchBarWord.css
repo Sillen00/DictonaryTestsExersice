@@ -4,10 +4,34 @@
     margin: 1rem 1rem;
 }
 
-.wordSearchField {
+.wordSearchFieldDiv {
+    width: 60rem;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.wordSearchFieldDiv input {
+    width: 88%;
     padding: 1rem 1rem;
     background-color: white;
-    width: 60em;
     border: 3px solid var(--primary-color);
-    border-radius: 0.5rem;
+    border-right: none;
+    outline: none;
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.wordSearchFieldDiv button {
+    width: 12%;
+    min-width: 80px;
+    padding: 1rem 1rem;
+    background-color: var(--primary-color);
+    border: 3px solid var(--primary-color);
+    border-left: none;
+    border-radius: 0 0.5rem 0.5rem 0;
+    color: white;
+    font-weight: bold;
+    outline: none;
+}
+.wordSearchFieldDiv button:hover {
+    background-color: var(--secondary-color);
 }
