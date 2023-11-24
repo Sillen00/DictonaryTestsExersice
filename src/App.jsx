@@ -1,15 +1,12 @@
 import "./App.css";
 import Header from "./Header";
-import SearchBarWord from "./SearchBarWord";
-import WordCard from "./WordCard";
+import WordContainer from "./WordContainer";
 
 function App() {
     return (
         <div className="App">
             <Header />
-            <SearchBarWord />
-
-            <WordCard />
+            <WordContainer />
         </div>
     );
 }
