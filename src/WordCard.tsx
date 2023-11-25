@@ -2,14 +2,9 @@ import React from "react";
 import "./WordCard.css";
 
 function WordCard({ searchResultWord }) {
-    const placeholder =
-        searchResultWord.length === 0 ? "Search for a word" : "";
-
     return (
         <div className="container">
             <div className="wordCard">
-                <h1>{placeholder}</h1>
-
                 {searchResultWord.map((wordObj) => (
                     <div key={wordObj.word}>
                         <h1>{wordObj.word}</h1>
@@ -26,7 +21,6 @@ function WordCard({ searchResultWord }) {
                                     Definition:{" "}
                                     {meaning.definitions[0].definition}
                                 </p>
-                                {/* Additional information about the meaning */}
                             </div>
                         ))}
 
@@ -38,7 +32,6 @@ function WordCard({ searchResultWord }) {
                         {wordObj.phonetics.map((phonetic, index) => (
                             <div key={index}>
                                 <p>Phonetic: {phonetic.text}</p>
-                                {/* Additional information about the phonetic */}
 
                                 {/* Audio */}
                                 <audio controls>
@@ -51,13 +44,8 @@ function WordCard({ searchResultWord }) {
                                 </audio>
                             </div>
                         ))}
-
-                        {/* Other details like sourceUrls */}
-                        {/* ... */}
                     </div>
                 ))}
-
-                {/* {sound && <button>{`Sound ${sound}🔊`}</button>} */}
             </div>
         </div>
     );
