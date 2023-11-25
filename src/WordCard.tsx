@@ -14,6 +14,10 @@ function WordCard({ searchResultWord }) {
                     <div key={wordObj.word}>
                         <h1>{wordObj.word}</h1>
 
+                        <br />
+                        <hr />
+                        <br />
+
                         {/* Meanings */}
                         {wordObj.meanings.map((meaning, index) => (
                             <div key={index}>
@@ -26,11 +30,25 @@ function WordCard({ searchResultWord }) {
                             </div>
                         ))}
 
+                        <br />
+                        <hr />
+                        <br />
+
                         {/* Phonetics */}
                         {wordObj.phonetics.map((phonetic, index) => (
                             <div key={index}>
                                 <p>Phonetic: {phonetic.text}</p>
                                 {/* Additional information about the phonetic */}
+
+                                {/* Audio */}
+                                <audio controls>
+                                    <source
+                                        src={phonetic.audio}
+                                        type="audio/mpeg"
+                                    />
+                                    Your browser does not support the audio
+                                    element.
+                                </audio>
                             </div>
                         ))}
 
