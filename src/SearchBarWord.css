@@ -6,6 +6,9 @@
 
 .wordSearchFieldDiv {
     width: 60rem;
+}
+
+.wordSearchFieldDiv form {
     display: flex;
     flex-wrap: nowrap;
 }
@@ -45,4 +48,12 @@
 .wordSearchFieldDiv button:hover {
     opacity: 0.8;
     cursor: pointer;
+}
+
+.errorMessage {
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    text-align: center;
+    font-weight: bold;
+    padding: 0 0 1rem 0;
 }

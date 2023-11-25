@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./SearchBarWord.css";
 
-function SearchBarWord({ onSearch }) {
+function SearchBarWord({ onSearch, errorMessage }) {
     const [searchTerm, setSearchTerm] = useState("");
 
     const handleInputChange = (event) => {
@@ -14,17 +14,22 @@ function SearchBarWord({ onSearch }) {
     };
 
     return (
-        <div className="inputContainer">
-            <div className="wordSearchFieldDiv">
-                <input
-                    type="text"
-                    placeholder="Search Words"
-                    value={searchTerm}
-                    onChange={handleInputChange}
-                />
-                <button onClick={handleSearchClick}>Search</button>
+        <>
+            <div className="inputContainer">
+                <div className="wordSearchFieldDiv">
+                    <form action="#" onSubmit={handleSearchClick}>
+                        <input
+                            type="text"
+                            placeholder="Search Words"
+                            value={searchTerm}
+                            onChange={handleInputChange}
+                        />
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
             </div>
-        </div>
+            {errorMessage && <p className="errorMessage">{errorMessage}</p>}
+        </>
     );
 }
 
