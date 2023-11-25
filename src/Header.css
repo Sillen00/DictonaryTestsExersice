@@ -2,7 +2,31 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--primary-color);
     padding: 1rem 1rem;
     color: white;
+}
+
+#light header {
+    background-color: var(--secondary-color-light);
+    color: var(--black);
+}
+
+#dark header {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+header ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    gap: 10px;
+}
+
+header ul li {
+    font-size: 1.4rem;
+}
+header ul li div {
+    display: block !important;
 }

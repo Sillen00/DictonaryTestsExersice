@@ -5,6 +5,12 @@
 }
 
 :root {
-    --primary-color: #283979;
-    --secondary-color: #796928;
+    --primary-color: #242429;
+    --secondary-color: #1a3297;
+    --third-color: #471da9;
+    --primary-color-light: #dbdeec;
+    --secondary-color-light: #abb8f1;
+    --third-color-light: #9e7ee9;
+    --white: #ffffff;
+    --black: #000000;
 }

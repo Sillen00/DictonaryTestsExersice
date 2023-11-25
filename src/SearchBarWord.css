@@ -14,7 +14,7 @@
     width: 88%;
     padding: 1rem 1rem;
     background-color: white;
-    border: 3px solid var(--primary-color);
+    border: 3px solid var(--black);
     border-right: none;
     outline: none;
     border-radius: 0.5rem 0 0 0.5rem;
@@ -24,14 +24,25 @@
     width: 12%;
     min-width: 80px;
     padding: 1rem 1rem;
-    background-color: var(--primary-color);
-    border: 3px solid var(--primary-color);
+    border: 3px solid var(--black);
     border-left: none;
     border-radius: 0 0.5rem 0.5rem 0;
     color: white;
     font-weight: bold;
     outline: none;
 }
-.wordSearchFieldDiv button:hover {
+
+#light .wordSearchFieldDiv button {
+    background-color: var(--secondary-color-light);
+    color: var(--black);
+}
+
+#dark .wordSearchFieldDiv button {
     background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.wordSearchFieldDiv button:hover {
+    opacity: 0.8;
+    cursor: pointer;
 }
