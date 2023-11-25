@@ -7,10 +7,10 @@ function Header() {
     const { toggleTheme, theme } = useContext(ThemeContext);
     return (
         <header>
-            <h1>Simon´s Dictionary</h1>
+            <h1>Simon's Dictionary</h1>
             <nav>
                 <ul>
-                    <li>🌞🌚</li>
+                    {theme === "dark" ? <li>🌚</li> : <li>🌞</li>}
                     <li>
                         <ReactSwitch
                             onChange={toggleTheme}
