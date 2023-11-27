@@ -5,20 +5,11 @@ import userEvent from "@testing-library/user-event";
 import App from "../src/App";
 import Header from "../src/Header";
 import SearchBarWord from "../src/SearchBarWord";
+import WordContainer from "../src/WordContainer";
 
 import { vi } from "vitest";
 
-describe("something truthy and falsy", () => {
-    it("true to be true", () => {
-        expect(true).toBe(true);
-    });
-
-    it("false to be false", () => {
-        expect(false).toBe(false);
-    });
-});
-
-describe("Header component tests", () => {
+describe("Header functionality tests", () => {
     it("should have a h1 heading in header.", () => {
         render(<Header />);
         const headingText = screen.getByRole("heading", {
@@ -38,7 +29,7 @@ describe("Header component tests", () => {
     });
 });
 
-describe("Searchbar component tests", () => {
+describe("Searchbar functionality tests", () => {
     it("should be able to search for a word", async () => {
         const handleSearch = vi.fn();
 
@@ -52,5 +43,18 @@ describe("Searchbar component tests", () => {
         await user.click(searchButton);
 
         expect(handleSearch).toHaveBeenCalledWith("hello");
+    });
+
+    it("should show error message when search is empty or invalid", async () => {
+        render(<WordContainer />);
+
+        const user = userEvent.setup();
+        const searchButton = screen.getByRole("button", { name: "Search" });
+        await user.click(searchButton);
+
+        const errorMessageElement = await screen.findByText(
+            /No results found./i
+        );
+        expect(errorMessageElement).toBeInTheDocument();
     });
 });
