@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FavoriteWords from "./FavoriteWords";
 import SearchBarWord from "./SearchBarWord";
 import WordCard from "./WordCard";
 
@@ -41,6 +42,8 @@ const WordContainer = () => {
             />
 
             <WordCard searchResultWord={searchResultWord} />
+
+            <FavoriteWords />
         </div>
     );
 };

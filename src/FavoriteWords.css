@@ -1,0 +1,13 @@
+.favoritsContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.favoritsListDiv {
+    width: 60rem;
+    max-width: 60rem;
+    border: 4px solid var(--black);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 0 1rem;
+}
