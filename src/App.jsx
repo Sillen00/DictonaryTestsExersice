@@ -16,7 +16,7 @@ function App() {
     };
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
-            <div className="App" id={theme}>
+            <div className="App" data-testid="App" id={theme}>
                 <Header />
                 <WordContainer />
             </div>
