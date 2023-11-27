@@ -1,44 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SearchBarWord from "./SearchBarWord";
 import WordCard from "./WordCard";
 
 const WordContainer = () => {
-    const [searchTerm, setSearchTerm] = useState("");
     const [searchResultWord, setSearchResultWord] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
 
-    useEffect(() => {
-        if (!searchTerm || searchTerm.trim() === "") {
-            setSearchResultWord([]);
-            return;
-        }
+    const handleSearch = async (searchTerm) => {
+        try {
+            const response = await fetch(
+                `https://api.dictionaryapi.dev/api/v2/entries/en/${searchTerm}`
+            );
 
-        // Fetch data from API based on searchTerm
-        fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchTerm}`)
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(
-                    "Data fetched with searchterm:",
-                    searchTerm,
-                    "data:",
-                    data
-                );
+            if (response.ok) {
+                const data = await response.json();
                 setSearchResultWord(data);
-            })
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-                setErrorMessage("Error fetching data.");
-            });
-    }, [searchTerm]);
-
-    const handleSearch = (searchTerm) => {
-        if (!searchTerm || searchTerm.trim() === "") {
-            setErrorMessage("No results found.");
-            setSearchResultWord([]);
-            return;
+                console.log(data);
+                setErrorMessage("");
+            } else {
+                if (!searchTerm || searchTerm.trim() === "") {
+                    setErrorMessage("No results found.");
+                    setSearchResultWord([]);
+                    return;
+                }
+                setErrorMessage("Word not found.");
+                setSearchResultWord([]); // Clear previous results if there was an error
+            }
+        } catch (error) {
+            console.error("Error fetching word:", error);
+            setErrorMessage("Error fetching word");
+            setSearchResultWord([]); // Clear previous results if there was an error
         }
-        setErrorMessage("");
-        setSearchTerm(searchTerm);
     };
 
     return (
