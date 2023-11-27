@@ -1,13 +1,22 @@
 import React from "react";
 import "./WordCard.css";
 
-function WordCard({ searchResultWord }) {
+function WordCard({ searchResultWord, onFavoriteWord }) {
     return (
         <div className="container">
             <div className="wordCard">
                 {searchResultWord.length > 0 && (
                     <div key={searchResultWord[0].word}>
                         <h1>{searchResultWord[0].word}</h1>
+
+                        {/* Favorite button */}
+                        <button
+                            onClick={() =>
+                                onFavoriteWord(searchResultWord[0].word)
+                            }
+                        >
+                            🧡
+                        </button>
 
                         <br />
                         <hr />

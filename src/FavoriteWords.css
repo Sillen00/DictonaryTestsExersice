@@ -11,3 +11,24 @@
     padding: 1rem;
     margin: 0 1rem;
 }
+
+.favoritsListDiv li {
+    font-size: 1.5rem;
+    list-style: none;
+    margin: 0.2rem 0;
+    padding: 0.5rem;
+    border: 2px solid var(--black);
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--secondary-color);
+}
+
+.favoritsListDiv li:hover {
+    opacity: 0.8;
+}
+
+.favoritsListDiv li button {
+    background-color: red;
+    font-size: 1.2rem;
+}

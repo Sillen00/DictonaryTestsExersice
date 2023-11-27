@@ -6,6 +6,7 @@ import WordCard from "./WordCard";
 const WordContainer = () => {
     const [searchResultWord, setSearchResultWord] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
+    const [favoriteWords, setFavoriteWords] = useState([] as string[]);
 
     const handleSearch = async (searchTerm) => {
         try {
@@ -34,6 +35,18 @@ const WordContainer = () => {
         }
     };
 
+    const handleFavoriteWord = (word) => {
+        if (favoriteWords.includes(word)) {
+            setFavoriteWords(favoriteWords.filter((w) => w !== word));
+        } else {
+            setFavoriteWords([...favoriteWords, word]);
+        }
+    };
+
+    const handleRemoveFavoriteWord = (word) => {
+        setFavoriteWords(favoriteWords.filter((w) => w !== word));
+    };
+
     return (
         <div>
             <SearchBarWord
@@ -41,9 +54,16 @@ const WordContainer = () => {
                 onSearch={handleSearch}
             />
 
-            <WordCard searchResultWord={searchResultWord} />
+            <WordCard
+                searchResultWord={searchResultWord}
+                onFavoriteWord={handleFavoriteWord}
+            />
 
-            <FavoriteWords />
+            <FavoriteWords
+                favoriteWords={favoriteWords}
+                onRemoveFavoriteWord={handleRemoveFavoriteWord}
+                onSearch={handleSearch}
+            />
         </div>
     );
 };

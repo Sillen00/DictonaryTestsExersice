@@ -1,15 +1,30 @@
 import React from "react";
 import "./FavoriteWords.css";
 
-function FavoriteWords() {
+function FavoriteWords({ favoriteWords, onRemoveFavoriteWord, onSearch }) {
+    console.log("Favorite words:", favoriteWords);
     return (
-        //Favorite words list
+        // Favorite words list
         <div className="favoritsContainer">
             <div className="favoritsListDiv">
-                <h3>Favorite words</h3>
+                <h3>Favorite words:</h3>
                 <ul>
                     {/* Loop out favorite words. */}
-                    <li></li>
+                    {favoriteWords.length > 0 &&
+                        favoriteWords
+                            .map((word, index) => (
+                                <li onClick={() => onSearch(word)} key={index}>
+                                    <p>{word}</p>
+                                    <button
+                                        onClick={() =>
+                                            onRemoveFavoriteWord(word)
+                                        }
+                                    >
+                                        🗑️
+                                    </button>
+                                </li>
+                            ))
+                            .reverse()}
                 </ul>
             </div>
         </div>
