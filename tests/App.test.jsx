@@ -5,6 +5,7 @@ import userEvent from "@testing-library/user-event";
 import App from "../src/App";
 import Header from "../src/Header";
 import SearchBarWord from "../src/SearchBarWord";
+import WordCard from "../src/WordCard";
 import WordContainer from "../src/WordContainer";
 
 import { vi } from "vitest";
@@ -56,5 +57,49 @@ describe("Searchbar functionality tests", () => {
             /No results found./i
         );
         expect(errorMessageElement).toBeInTheDocument();
+    });
+});
+
+describe("WordCard functionality tests", () => {
+    it("should display and play audio if present", async () => {
+        const mockWord = {
+            // Mock the necessary properties for a word with audio
+            word: "mother",
+            phonetics: [
+                {
+                    audio: "https://api.dictionaryapi.dev/media/pronunciations/en/mother-au.mp3",
+                },
+            ],
+            meanings: [
+                {
+                    partOfSpeech: "noun",
+                    definitions: [
+                        {
+                            definition: "a baby maschine",
+                            example: "This is an example sentence.",
+                        },
+                    ],
+                    synonyms: ["mom", "model", "boss"],
+                    antonyms: ["opposite1", "opposite2", "opposite3"],
+                },
+            ],
+        };
+
+        const favoriteWords = ["example"];
+
+        render(
+            <WordCard
+                searchResultWord={[mockWord]}
+                favoriteWords={favoriteWords}
+            />
+        );
+        const user = userEvent.setup();
+        const audioElement = screen.getByRole("audio");
+        expect(audioElement).toBeInTheDocument();
+        await user.click(audioElement);
+        waitFor(() => {
+            // Check if the audio is playing
+            expect(audioElement).toHaveAttribute("playing", "");
+        }, 1000);
     });
 });

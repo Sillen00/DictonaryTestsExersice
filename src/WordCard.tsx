@@ -130,6 +130,7 @@ function WordCard({ searchResultWord, onFavoriteWord, favoriteWords }) {
                                     {/* Audio */}
                                     <audio controls>
                                         <source
+                                            role="audio"
                                             src={
                                                 searchResultWord[0].phonetics[0]
                                                     .audio
