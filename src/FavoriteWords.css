@@ -29,6 +29,7 @@
 }
 
 .favoritsListDiv li button {
-    background-color: red;
-    font-size: 1.2rem;
+    background-color: var(--secondary-color);
+    border: none;
+    font-size: 1.4rem;
 }

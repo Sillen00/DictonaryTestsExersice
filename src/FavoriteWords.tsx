@@ -20,7 +20,7 @@ function FavoriteWords({ favoriteWords, onRemoveFavoriteWord, onSearch }) {
                                             onRemoveFavoriteWord(word)
                                         }
                                     >
-                                        🗑️
+                                        💩
                                     </button>
                                 </li>
                             ))

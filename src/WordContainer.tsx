@@ -88,6 +88,7 @@ const WordContainer = () => {
             <WordCard
                 searchResultWord={searchResultWord}
                 onFavoriteWord={handleFavoriteWord}
+                favoriteWords={favoriteWords}
             />
 
             <FavoriteWords
