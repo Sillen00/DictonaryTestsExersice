@@ -21,6 +21,13 @@
     border-radius: 0.5rem;
     display: flex;
     justify-content: space-between;
+}
+
+#light .favoritsListDiv li {
+    background-color: var(--secondary-color-light);
+}
+
+#dark .favoritsListDiv li {
     background-color: var(--secondary-color);
 }
 
@@ -29,7 +36,14 @@
 }
 
 .favoritsListDiv li button {
-    background-color: var(--secondary-color);
     border: none;
     font-size: 1.4rem;
+}
+
+#light .favoritsListDiv li button {
+    background-color: var(--secondary-color-light);
+}
+
+#dark .favoritsListDiv li button {
+    background-color: var(--secondary-color);
 }
