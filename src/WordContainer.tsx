@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FavoriteWords from "./FavoriteWords";
 import SearchBarWord from "./SearchBarWord";
 import WordCard from "./WordCard";
@@ -7,6 +7,20 @@ const WordContainer = () => {
     const [searchResultWord, setSearchResultWord] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
     const [favoriteWords, setFavoriteWords] = useState([] as string[]);
+
+    useEffect(() => {
+        try {
+            const storedFavoriteWords = sessionStorage.getItem("favoriteWords");
+            if (storedFavoriteWords) {
+                setFavoriteWords(JSON.parse(storedFavoriteWords));
+            }
+        } catch (error) {
+            console.error(
+                "Error parsing favoriteWords from sessionStorage:",
+                error
+            );
+        }
+    }, [setFavoriteWords]);
 
     const handleSearch = async (searchTerm) => {
         try {
@@ -37,14 +51,31 @@ const WordContainer = () => {
 
     const handleFavoriteWord = (word) => {
         if (favoriteWords.includes(word)) {
-            setFavoriteWords(favoriteWords.filter((w) => w !== word));
+            // setFavoriteWords(favoriteWords.filter((w) => w !== word));
+            const updatedFavorites = favoriteWords.filter((w) => w !== word);
+            setFavoriteWords(updatedFavorites);
+            sessionStorage.setItem(
+                "favoriteWords",
+                JSON.stringify(updatedFavorites)
+            );
         } else {
-            setFavoriteWords([...favoriteWords, word]);
+            // setFavoriteWords([...favoriteWords, word]);
+            const updatedFavorites = [...favoriteWords, word];
+            setFavoriteWords(updatedFavorites);
+            sessionStorage.setItem(
+                "favoriteWords",
+                JSON.stringify(updatedFavorites)
+            );
         }
     };
 
     const handleRemoveFavoriteWord = (word) => {
-        setFavoriteWords(favoriteWords.filter((w) => w !== word));
+        const updatedFavorites = favoriteWords.filter((w) => w !== word);
+        setFavoriteWords(updatedFavorites);
+        sessionStorage.setItem(
+            "favoriteWords",
+            JSON.stringify(updatedFavorites)
+        );
     };
 
     return (
