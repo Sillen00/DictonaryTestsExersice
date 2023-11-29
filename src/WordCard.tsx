@@ -101,10 +101,10 @@ function WordCard({ searchResultWord, onFavoriteWord, favoriteWords }) {
                                             <>
                                                 <p>
                                                     Antonyms:{" "}
-                                                    {searchResultWord[0].meanings[0].synonyms.map(
-                                                        (synonym, index) => (
+                                                    {searchResultWord[0].meanings[0].antonyms.map(
+                                                        (antonym, index) => (
                                                             <span key={index}>
-                                                                {synonym}{" "}
+                                                                {antonym}{" "}
                                                             </span>
                                                         )
                                                     )}

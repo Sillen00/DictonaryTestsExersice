@@ -60,6 +60,82 @@ describe("Searchbar functionality tests", () => {
     });
 });
 
+describe("WordContainer functionality tests", () => {
+    it("should display the word in the wordCard", async () => {
+        render(<WordContainer />);
+        const user = userEvent.setup();
+        const searchbar = screen.getByRole("textbox");
+        await user.type(searchbar, "strong");
+        await waitFor(() => expect(searchbar).toHaveValue("strong"));
+
+        const searchButton = screen.getByRole("button", { name: "Search" });
+        await user.click(searchButton);
+
+        const wordCardWords = await screen.findAllByText(/strong/i);
+        expect(wordCardWords.length).not.toEqual(0);
+    });
+
+    it("should display a definition in the wordCard", async () => {
+        render(<WordContainer />);
+        const user = userEvent.setup();
+        const searchbar = screen.getByRole("textbox");
+        await user.type(searchbar, "strong");
+        await waitFor(() => expect(searchbar).toHaveValue("strong"));
+
+        const searchButton = screen.getByRole("button", { name: "Search" });
+        await user.click(searchButton);
+
+        const wordCardDefinition = await screen.findByText(
+            /Capable of producing great physical force./i
+        );
+        expect(wordCardDefinition).toBeInTheDocument();
+    });
+
+    it("should display an example sentence in the wordCard", async () => {
+        render(<WordContainer />);
+        const user = userEvent.setup();
+        const searchbar = screen.getByRole("textbox");
+        await user.type(searchbar, "strong");
+        await waitFor(() => expect(searchbar).toHaveValue("strong"));
+
+        const searchButton = screen.getByRole("button", { name: "Search" });
+        await user.click(searchButton);
+
+        const wordCardExample = await screen.findByText(
+            /a big strong man; Jake was tall and strong/i
+        );
+        expect(wordCardExample).toBeInTheDocument();
+    });
+
+    it("should display a synonym in the wordCard", async () => {
+        render(<WordContainer />);
+        const user = userEvent.setup();
+        const searchbar = screen.getByRole("textbox");
+        await user.type(searchbar, "strong");
+        await waitFor(() => expect(searchbar).toHaveValue("strong"));
+
+        const searchButton = screen.getByRole("button", { name: "Search" });
+        await user.click(searchButton);
+
+        const wordCardSynonym = await screen.findByText(/powerful/i);
+        expect(wordCardSynonym).toBeInTheDocument();
+    });
+
+    it("should display an antonym in the wordCard", async () => {
+        render(<WordContainer />);
+        const user = userEvent.setup();
+        const searchbar = screen.getByRole("textbox");
+        await user.type(searchbar, "strong");
+        await waitFor(() => expect(searchbar).toHaveValue("strong"));
+
+        const searchButton = screen.getByRole("button", { name: "Search" });
+        await user.click(searchButton);
+
+        const wordCardAntonym = await screen.findByText(/forceless/i);
+        expect(wordCardAntonym).toBeInTheDocument();
+    });
+});
+
 describe("WordCard functionality tests", () => {
     it("should display and play audio if present", async () => {
         const mockWord = {
