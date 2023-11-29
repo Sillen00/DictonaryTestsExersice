@@ -10,6 +10,18 @@ import WordContainer from "../src/WordContainer";
 
 import { vi } from "vitest";
 
+// const server = setupServer(
+//     rest.get(
+//         "https://api.dictionaryapi.dev/api/v2/entries/en/",
+//         (_req, res, ctx) => res(ctx.json({ drinks: mockDrinks }))
+//     )
+// );
+
+// beforeAll(() => server.listen());
+
+// afterAll(() => server.close());
+
+
 describe("Header functionality tests", () => {
     it("should have a h1 heading in header.", () => {
         render(<Header />);
