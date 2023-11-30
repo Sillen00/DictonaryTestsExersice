@@ -12,6 +12,7 @@ function WordCard({ searchResultWord, onFavoriteWord, favoriteWords }) {
                         {/* Favorite button */}
                         <button
                             className="favoriteWordButton"
+                            data-testid="favoriteWordButton"
                             onClick={() =>
                                 onFavoriteWord(searchResultWord[0].word)
                             }
