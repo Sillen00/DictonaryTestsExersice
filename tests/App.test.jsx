@@ -12,3 +12,8 @@ const server = setupServer(
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
+
+
+it("true should be true", () => {   
+    expect(true).toBe(true);
+});
