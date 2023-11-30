@@ -2,7 +2,6 @@ import React from "react";
 import "./FavoriteWords.css";
 
 function FavoriteWords({ favoriteWords, onRemoveFavoriteWord, onSearch }) {
-    console.log("Favorite words:", favoriteWords);
     return (
         // Favorite words list
         <div className="favoritsContainer">
