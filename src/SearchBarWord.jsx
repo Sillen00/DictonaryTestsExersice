@@ -9,7 +9,7 @@ function SearchBarWord({ onSearch, errorMessage }) {
         setSearchTerm(term);
     };
 
-    const handleSearchClick = (e: React.FormEvent) => {
+    const handleSearchClick = (e) => {
         e.preventDefault();
         onSearch(searchTerm);
     };

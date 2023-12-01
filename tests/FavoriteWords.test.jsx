@@ -15,8 +15,8 @@ describe("FavoriteWords functionality tests", () => {
         const searchButton = screen.getByRole("button", { name: "Search" });
         await user.click(searchButton);
 
-        const favoriteButton = await screen.findByTestId("favoriteWordButton");
-        await user.click(favoriteButton);
+        const favoriteButton = await screen.findAllByTestId("favoriteWordButton");
+        await user.click(favoriteButton[0]);
 
         // Search for another word to expect "father" to be the only text in the favorite list.
         await user.clear(searchbar);
@@ -40,8 +40,8 @@ describe("FavoriteWords functionality tests", () => {
         const searchButton = screen.getByRole("button", { name: "Search" });
         await user.click(searchButton);
 
-        const favoriteButton = await screen.findByTestId("favoriteWordButton");
-        await user.click(favoriteButton);
+        const favoriteButton = await screen.findAllByTestId("favoriteWordButton");
+        await user.click(favoriteButton[0]);
 
         const removeButton = await screen.findByRole("button", { name: "💩" });
         await user.click(removeButton);

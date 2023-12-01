@@ -6,7 +6,7 @@ import WordCard from "./WordCard";
 const WordContainer = () => {
     const [searchResultWord, setSearchResultWord] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
-    const [favoriteWords, setFavoriteWords] = useState([] as string[]);
+    const [favoriteWords, setFavoriteWords] = useState([]);
 
     useEffect(() => {
         try {

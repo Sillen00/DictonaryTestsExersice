@@ -35,8 +35,8 @@ describe("WordCard functionality tests", () => {
         const searchButton = screen.getByRole("button", { name: "Search" });
         await user.click(searchButton);
 
-        const wordCardWords = await screen.findByText("strong");
-        expect(wordCardWords).toBeInTheDocument();
+        const wordCardWords = await screen.findAllByText(/strong/i);
+        expect(wordCardWords).toHaveLength(5);
 
         const wordCardDefinition = await screen.findByText(
             /Capable of producing great physical force./i
@@ -48,10 +48,10 @@ describe("WordCard functionality tests", () => {
         );
         expect(wordCardExample).toBeInTheDocument();
 
-        const wordCardSynonym = await screen.findByText(/powerful/i);
+        const wordCardSynonym = await screen.findByText("powerful");
         expect(wordCardSynonym).toBeInTheDocument();
 
-        const wordCardAntonym = await screen.findByText(/forceless/i);
+        const wordCardAntonym = await screen.findByText("forceless");
         expect(wordCardAntonym).toBeInTheDocument();
     });
 
@@ -66,8 +66,10 @@ describe("WordCard functionality tests", () => {
         const searchButton = screen.getByRole("button", { name: "Search" });
         await user.click(searchButton);
 
-        const favoriteButton = await screen.findByTestId("favoriteWordButton");
-        await user.click(favoriteButton);
+        const favoriteButton = await screen.findAllByTestId(
+            "favoriteWordButton"
+        );
+        await user.click(favoriteButton[0]);
 
         // Search for another word to expect "father" to be the only text in the favorite list.
         await user.clear(searchbar);
@@ -81,7 +83,7 @@ describe("WordCard functionality tests", () => {
         await waitFor(() => expect(searchbar).toHaveValue("father"));
         await user.click(searchButton);
 
-        const favoriteWords2 = await screen.findByText(/🧡/i);
-        expect(favoriteWords2).toBeInTheDocument();
+        const favoriteWords2 = await screen.findAllByText(/🧡/i);
+        expect(favoriteWords2).toHaveLength(2);
     });
 });
