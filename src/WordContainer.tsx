@@ -30,6 +30,8 @@ const WordContainer = () => {
 
             if (response.ok) {
                 const data = await response.json();
+                setSearchResultWord([]);
+
                 setSearchResultWord(data);
                 console.log(data);
                 setErrorMessage("");
