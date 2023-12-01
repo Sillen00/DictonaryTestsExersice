@@ -1,9 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import SearchBarWord from "../src/SearchBarWord";
 import WordContainer from "../src/WordContainer";
-
-import userEvent from "@testing-library/user-event";
 
 describe("Searchbar functionality tests", () => {
     it("should be able to search for a word", async () => {
