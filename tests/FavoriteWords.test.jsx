@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import WordContainer from "../src/WordContainer";
 
 describe("FavoriteWords functionality tests", () => {
-    it.only("should display favorite words", async () => {
+    it("should display favorite words", async () => {
         render(<WordContainer />);
         const user = userEvent.setup();
 

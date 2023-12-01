@@ -35,8 +35,8 @@ describe("WordCard functionality tests", () => {
         const searchButton = screen.getByRole("button", { name: "Search" });
         await user.click(searchButton);
 
-        const wordCardWords = await screen.findAllByText(/strong/i);
-        expect(wordCardWords.length).not.toEqual(0);
+        const wordCardWords = await screen.findByText("strong");
+        expect(wordCardWords).toBeInTheDocument();
 
         const wordCardDefinition = await screen.findByText(
             /Capable of producing great physical force./i
