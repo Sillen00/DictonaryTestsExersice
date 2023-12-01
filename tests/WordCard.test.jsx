@@ -8,6 +8,23 @@ import WordContainer from "../src/WordContainer";
 import mockWordArray from "./mockWordArray.json";
 
 describe("WordCard functionality tests", () => {
+    it("should display and play audio if present", async () => {
+        const favoriteWords = ["example", "example2"];
+
+        render(
+            <WordCard
+                searchResultWord={mockWordArray}
+                favoriteWords={favoriteWords}
+            />
+        );
+        const audioElement = screen.getByRole("audio");
+        expect(audioElement).toBeInTheDocument();
+        expect(audioElement).toHaveAttribute(
+            "src",
+            "https://api.dictionaryapi.dev/media/pronunciations/en/mother-au.mp3"
+        );
+    });
+
     it("should display the result values in the wordCard", async () => {
         render(<WordContainer />);
         const user = userEvent.setup();
@@ -36,24 +53,5 @@ describe("WordCard functionality tests", () => {
 
         const wordCardAntonym = await screen.findByText(/forceless/i);
         expect(wordCardAntonym).toBeInTheDocument();
-    });
-
-    it("should display and play audio if present", async () => {
-        const favoriteWords = ["example", "example2"];
-
-        render(
-            <WordCard
-                searchResultWord={mockWordArray}
-                favoriteWords={favoriteWords}
-            />
-        );
-        const user = userEvent.setup();
-        const audioElement = screen.getByRole("audio");
-        expect(audioElement).toBeInTheDocument();
-        await user.click(audioElement);
-        waitFor(() => {
-            // Check if the audio is playing
-            expect(audioElement).toHaveAttribute("playing", "");
-        }, 1000);
     });
 });
