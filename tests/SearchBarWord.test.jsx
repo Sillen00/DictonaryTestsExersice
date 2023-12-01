@@ -20,7 +20,7 @@ describe("Searchbar functionality tests", () => {
         expect(handleSearch).toHaveBeenCalledWith("hello");
     });
 
-    it("should show error message when search is empty or invalid", async () => {
+    it("should show error message when search is empty", async () => {
         render(<WordContainer />);
 
         const user = userEvent.setup();
@@ -31,5 +31,33 @@ describe("Searchbar functionality tests", () => {
             /No results found./i
         );
         expect(errorMessageElement).toBeInTheDocument();
+    });
+
+    it("should show error message when search is invalid", async () => {
+        render(<WordContainer />);
+
+        const user = userEvent.setup();
+        const searchbar = screen.getByRole("textbox");
+        await user.type(searchbar, "invalidddooooooo");
+
+        const searchButton = screen.getByRole("button", { name: "Search" });
+        await user.click(searchButton);
+
+        const errorMessageElement = await screen.findByText(/Word not found./i);
+        expect(errorMessageElement).toBeInTheDocument();
+    });
+
+    it("should be able to do search by pressing enter", async () => {
+        const handleSearch = vi.fn();
+
+        render(<SearchBarWord onSearch={handleSearch} errorMessage={""} />);
+        const user = userEvent.setup();
+        const searchbar = screen.getByRole("textbox");
+        await user.type(searchbar, "hello");
+        await waitFor(() => expect(searchbar).toHaveValue("hello"));
+
+        await user.type(searchbar, "{enter}");
+
+        expect(handleSearch).toHaveBeenCalledWith("hello");
     });
 });

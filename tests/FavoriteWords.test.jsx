@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import WordContainer from "../src/WordContainer";
 
 describe("FavoriteWords functionality tests", () => {
-    it("should display favorite words", async () => {
+    it.only("should display favorite words", async () => {
         render(<WordContainer />);
         const user = userEvent.setup();
 
@@ -18,11 +18,10 @@ describe("FavoriteWords functionality tests", () => {
         const favoriteButton = await screen.findByTestId("favoriteWordButton");
         await user.click(favoriteButton);
 
-        // Search for another word to expect "father" to be the only text.
+        // Search for another word to expect "father" to be the only text in the favorite list.
         await user.clear(searchbar);
         await user.type(searchbar, "hamster");
         await waitFor(() => expect(searchbar).toHaveValue("hamster"));
-
         await user.click(searchButton);
 
         // Expect the favorite word father to be displayed in the favorite list.

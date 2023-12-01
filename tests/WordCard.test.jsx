@@ -54,4 +54,34 @@ describe("WordCard functionality tests", () => {
         const wordCardAntonym = await screen.findByText(/forceless/i);
         expect(wordCardAntonym).toBeInTheDocument();
     });
+
+    it("should be able to search and favorice a word, search another word then go back and it should still be favoriced", async () => {
+        render(<WordContainer />);
+        const user = userEvent.setup();
+
+        const searchbar = screen.getByRole("textbox");
+        await user.type(searchbar, "father");
+        await waitFor(() => expect(searchbar).toHaveValue("father"));
+
+        const searchButton = screen.getByRole("button", { name: "Search" });
+        await user.click(searchButton);
+
+        const favoriteButton = await screen.findByTestId("favoriteWordButton");
+        await user.click(favoriteButton);
+
+        // Search for another word to expect "father" to be the only text in the favorite list.
+        await user.clear(searchbar);
+        await user.type(searchbar, "hamster");
+        await waitFor(() => expect(searchbar).toHaveValue("hamster"));
+        await user.click(searchButton);
+
+        // Go back to the word "father" and expect it to still be favoriced.
+        await user.clear(searchbar);
+        await user.type(searchbar, "father");
+        await waitFor(() => expect(searchbar).toHaveValue("father"));
+        await user.click(searchButton);
+
+        const favoriteWords2 = await screen.findByText(/🧡/i);
+        expect(favoriteWords2).toBeInTheDocument();
+    });
 });
