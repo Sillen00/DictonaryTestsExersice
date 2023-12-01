@@ -14,7 +14,7 @@ function WordCard({ searchResultWord, onFavoriteWord, favoriteWords }) {
                                 {/* Favorite button */}
                                 <button
                                     className="favoriteWordButton"
-                                    data-testid={`favoriteWordButton-${index}`}
+                                    data-testid={`favoriteWordButton`}
                                     onClick={() => onFavoriteWord(wordObj.word)}
                                 >
                                     {favoriteWords.includes(wordObj.word)
