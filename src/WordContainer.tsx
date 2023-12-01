@@ -33,7 +33,6 @@ const WordContainer = () => {
                 setSearchResultWord([]);
 
                 setSearchResultWord(data);
-                console.log(data);
                 setErrorMessage("");
             } else {
                 if (!searchTerm || searchTerm.trim() === "") {

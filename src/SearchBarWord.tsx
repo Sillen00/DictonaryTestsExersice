@@ -9,7 +9,8 @@ function SearchBarWord({ onSearch, errorMessage }) {
         setSearchTerm(term);
     };
 
-    const handleSearchClick = () => {
+    const handleSearchClick = (e: React.FormEvent) => {
+        e.preventDefault();
         onSearch(searchTerm);
     };
 
@@ -17,7 +18,7 @@ function SearchBarWord({ onSearch, errorMessage }) {
         <>
             <div className="inputContainer">
                 <div className="wordSearchFieldDiv">
-                    <form action="#" onSubmit={handleSearchClick}>
+                    <form action="#" onSubmit={(e) => handleSearchClick(e)}>
                         <input
                             type="text"
                             placeholder="Search Words"
