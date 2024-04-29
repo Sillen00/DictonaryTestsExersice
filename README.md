@@ -12,7 +12,8 @@ This project is a simple web application that allows users to search for words i
 ## Technologies Used
 - **HTML**: Structure of the web pages.
 - **CSS**: Styling, including light and dark mode themes.
-- **JavaScript**: Handling user interactions and API requests.
+- **React**: Handling user interactions and API requests.
+- **Testing-library, jest-dom and react**: Tests making sure the code works as intended.
 - **Dictionary API**: Fetching word definitions and related information.
 
 ## How to Use
