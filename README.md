@@ -16,10 +16,4 @@ This project is a simple web application that allows users to search for words i
 - **Testing-library, jest-dom and react**: Tests making sure the code works as intended.
 - **Dictionary API**: Fetching word definitions and related information.
 
-## How to Use
-1. Enter a word in the search bar.
-2. View the definition and other information retrieved from the dictionary API.
-3. Click on the bookmark icon to add the word to your favorites list.
-4. Toggle between light and dark mode using the theme switcher.
-
 Feel free to clone or fork this repository and customize it according to your needs!
